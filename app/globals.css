@@ -36,6 +36,20 @@ html {
 }
 
 /* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 3s ease-in; /* 3s duration for slow motion fade-in */
+  animation-fill-mode: both; /* Keep initial state (opacity-0) until animation starts */
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -209,7 +223,7 @@ html {
 }
 
 /* Slide up animation for carousel content */
-@keyframes slideUp {
+@keyframes slideUp {  
   from {
     opacity: 0;
     transform: translateY(30px);
@@ -222,6 +236,90 @@ html {
 
 .animate-slide-up {
   animation: slideUp 0.6s ease-out;
+}
+
+  /* List item slide-in animation */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-list-item {
+  animation: slideInLeft 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Slide up with scale animation for Quick Facts cards */
+@keyframes slideUpScale {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-slide-up-scale {
+  animation: slideUpScale 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+/* Slide down animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-down {
+  animation: slideDown 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+/* Slide right animation for typing text */
+@keyframes slideRight {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-right {
+  animation: slideRight 0.3s ease-out forwards;
+}
+
+/* Wave animation for cursor */
+@keyframes wave {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-8px) rotate(-5deg);
+  }
+  75% {
+    transform: translateY(-8px) rotate(5deg);
+  }
+}
+
+.animate-wave {
+  animation: wave 0.5s ease-in-out infinite;
 }
 
 /* Selection color */
