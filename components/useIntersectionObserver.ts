@@ -2,9 +2,9 @@ import { useState, useEffect, useRef, RefObject } from 'react';
 
 export function useIntersectionObserver(
   options?: IntersectionObserverInit
-): [RefObject<HTMLDivElement>, boolean] {
+): [RefObject<HTMLDivElement | null>, boolean] {
   const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
