@@ -10,29 +10,11 @@ interface HeroSectionProps {
 export default function HeroSection({ heroRef, isHeroVisible }: HeroSectionProps) {
   const { hero } = portfolioContent;
 
-  // Split description into lines and then into characters for typing effect
+  // Split description into a single line for typing effect
   const splitIntoLines = (text: string): string[][] => {
-    // Split by periods to get sentences, then split each sentence into words
-    const sentences = text.split(/\.\s+/).filter(s => s.length > 0);
-    const lines: string[][] = [];
-    
-    sentences.forEach((sentence, sentenceIndex) => {
-      const words = sentence.split(' ');
-      // Split long sentences into chunks of ~12 words
-      const wordsPerLine = 12;
-      for (let i = 0; i < words.length; i += wordsPerLine) {
-        lines.push(words.slice(i, i + wordsPerLine));
-      }
-      // Add period back to last word of each sentence (except last sentence)
-      if (sentenceIndex < sentences.length - 1 && lines.length > 0) {
-        const lastLine = lines[lines.length - 1];
-        if (lastLine.length > 0) {
-          lastLine[lastLine.length - 1] += '.';
-        }
-      }
-    });
-    
-    return lines;
+    // Keep all words in a single line - no line breaks
+    const allWords = text.split(' ');
+    return [allWords];
   };
 
   const descriptionLines = splitIntoLines(hero.description);
@@ -92,7 +74,7 @@ export default function HeroSection({ heroRef, isHeroVisible }: HeroSectionProps
                 const typingSpeed = 0.03; // Speed of typing (seconds per character)
                 
                 return (
-                  <p key={lineIndex} className="mb-2 text-justify">
+                  <p key={lineIndex} className="text-justify whitespace-normal">
                     {line.map((word, wordIndex) => {
                       return (
                         <span key={wordIndex}>
