@@ -14,10 +14,12 @@ import ContactSection from '@/components/ContactSection';
 import ProfilesSection from '@/components/ProfilesSection';
 import QuickFactsSection from '@/components/QuickFactsSection';
 import Footer from '@/components/Footer';
+import Toast from '@/components/Toast';
 
 export default function Home() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [currentProject, setCurrentProject] = useState(0);
+  const [showToast, setShowToast] = useState(false);
   const [particles, setParticles] = useState<Array<{
     id: number;
     left: number;
@@ -120,20 +122,38 @@ export default function Home() {
 
     const observer = new IntersectionObserver(
       (entries) => {
+        // Find the entry with the highest intersection ratio
+        let maxRatio = 0;
+        let activeId = '';
+        
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const sectionId = entry.target.getAttribute('id');
-            if (sectionId) {
-              setActiveSection(sectionId);
-            }
+          if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+            maxRatio = entry.intersectionRatio;
+            activeId = entry.target.getAttribute('id') || '';
           }
         });
+        
+        if (activeId) {
+          setActiveSection(activeId);
+        }
       },
       {
-        threshold: 0.3,
+        threshold: [0.1, 0.3, 0.5],
         rootMargin: '-100px 0px -50% 0px',
       }
     );
+
+    // Also listen to hash changes for immediate feedback
+    const handleHashChange = () => {
+      const hash = window.location.hash.slice(1);
+      if (hash && ['about', 'projects', 'services', 'books', 'contact'].includes(hash)) {
+        setActiveSection(hash);
+      }
+    };
+    
+    window.addEventListener('hashchange', handleHashChange);
+    // Check initial hash
+    handleHashChange();
 
     sections.forEach(({ ref }) => {
       if (ref.current) {
@@ -147,6 +167,7 @@ export default function Home() {
           observer.unobserve(ref.current);
         }
       });
+      window.removeEventListener('hashchange', handleHashChange);
     };
   }, [isClient]);
 
@@ -185,6 +206,9 @@ export default function Home() {
     const mailtoLink = `mailto:${hero.contact.email}?subject=${subject}&body=${body}`;
     window.location.href = mailtoLink;
     
+    // Show success toast
+    setShowToast(true);
+    
     // Reset form after submission
     setFormData({ name: '', email: '', message: '' });
   };
@@ -197,6 +221,13 @@ export default function Home() {
       {/* Content */}
       <div className="relative z-10 min-h-screen">
         <Navigation activeSection={activeSection} />
+        
+        {/* Toast Notification */}
+        <Toast 
+          message="Message sent successfully! Your email client should open shortly." 
+          isVisible={showToast} 
+          onClose={() => setShowToast(false)}
+        />
 
         <HeroSection heroRef={heroRef} isHeroVisible={isHeroVisible} />
         <AboutSection aboutRef={aboutRef} isAboutVisible={isAboutVisible} />

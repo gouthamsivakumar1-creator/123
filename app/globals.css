@@ -75,6 +75,50 @@ html {
   animation: rotate 0.5s ease-in-out;
 }
 
+/* Number Animation for 50-500 */
+@keyframes numberPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+@keyframes numberGlow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(245, 158, 11, 0.5), 0 0 20px rgba(245, 158, 11, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(245, 158, 11, 0.8), 0 0 30px rgba(245, 158, 11, 0.5), 0 0 40px rgba(245, 158, 11, 0.3);
+  }
+}
+
+@keyframes numberSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.animate-number-pulse {
+  animation: numberPulse 2s ease-in-out infinite;
+}
+
+.animate-number-glow {
+  animation: numberGlow 3s ease-in-out infinite;
+}
+
+.animate-number-slide {
+  animation: numberSlideIn 0.8s ease-out forwards;
+}
+
 /* Collision Animation */
 @keyframes collide {
   0% {
@@ -317,6 +361,63 @@ html {
 
 .animate-wave {
   animation: wave 0.5s ease-in-out infinite;
+}
+
+/* Text Wave Animation */
+@keyframes textWave {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-10px);
+    opacity: 0.8;
+  }
+}
+
+@keyframes typing {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+.animate-typing-char {
+  display: inline-block;
+  animation: typing 0.05s ease-out forwards;
+  opacity: 0;
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background-color: currentColor;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+  vertical-align: baseline;
+}
+
+/* Staggered wave animation for words */
+.text-wave-container {
+  display: inline;
+}
+
+.text-wave-container span {
+  display: inline-block;
+  animation: textWaveChar 1.5s ease-in-out infinite;
+  animation-fill-mode: both;
 }
 
 /* Selection color */

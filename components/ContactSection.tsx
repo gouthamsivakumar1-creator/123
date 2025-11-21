@@ -1,4 +1,5 @@
 import React, { RefObject, FormEvent } from 'react';
+import Image from 'next/image';
 import SectionHeading from './SectionHeading';
 import { portfolioContent } from '@/content/portfolioContent';
 
@@ -18,6 +19,25 @@ export default function ContactSection({
   handleSubmit 
 }: ContactSectionProps) {
   const { contact, hero } = portfolioContent;
+
+  // Email validation regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Validation function
+  const isValid = () => {
+    const trimmedName = formData.name.trim();
+    const trimmedEmail = formData.email.trim();
+    const trimmedMessage = formData.message.trim();
+    
+    return (
+      trimmedName.length > 0 &&
+      trimmedEmail.length > 0 &&
+      emailRegex.test(trimmedEmail) &&
+      trimmedMessage.length > 0
+    );
+  };
+
+  const isFormValid = isValid();
 
   return (
     <section id="contact" ref={contactRef} className="py-36 px-6 bg-black/40 dark:bg-black/40 backdrop-blur-sm relative">
@@ -72,18 +92,16 @@ export default function ContactSection({
           
           <button
             type="submit"
-            className="w-full md:w-auto px-12 py-5 bg-gradient-to-r from-amber-600 to-amber-700 text-white rounded-xl font-bold text-lg hover:from-amber-700 hover:to-amber-800 transition-all duration-300 transform hover:scale-105 shadow-2xl shadow-amber-600/30"
+            disabled={!isFormValid}
+            className={`w-full md:w-auto px-12 py-5 rounded-xl font-bold text-lg transition-all duration-300 ${
+              isFormValid
+                ? 'bg-gradient-to-r from-amber-600 to-amber-700 text-white hover:from-amber-700 hover:to-amber-800 transform hover:scale-105 shadow-2xl shadow-amber-600/30 cursor-pointer'
+                : 'bg-slate-800 text-slate-500 cursor-not-allowed opacity-50'
+            }`}
           >
             {contact.form.submit}
           </button>
         </form>
-        
-        <p className="mt-10 text-center text-slate-400 text-lg">
-          {contact.emailText}{' '}
-          <a href={`mailto:${hero.contact.email}`} className="text-amber-600 hover:text-amber-500 hover:underline font-bold transition-colors">
-            {hero.contact.email}
-          </a>
-        </p>
       </div>
     </section>
   );

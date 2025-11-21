@@ -10,6 +10,44 @@ interface HeroSectionProps {
 export default function HeroSection({ heroRef, isHeroVisible }: HeroSectionProps) {
   const { hero } = portfolioContent;
 
+  // Split description into lines and then into characters for typing effect
+  const splitIntoLines = (text: string): string[][] => {
+    // Split by periods to get sentences, then split each sentence into words
+    const sentences = text.split(/\.\s+/).filter(s => s.length > 0);
+    const lines: string[][] = [];
+    
+    sentences.forEach((sentence, sentenceIndex) => {
+      const words = sentence.split(' ');
+      // Split long sentences into chunks of ~12 words
+      const wordsPerLine = 12;
+      for (let i = 0; i < words.length; i += wordsPerLine) {
+        lines.push(words.slice(i, i + wordsPerLine));
+      }
+      // Add period back to last word of each sentence (except last sentence)
+      if (sentenceIndex < sentences.length - 1 && lines.length > 0) {
+        const lastLine = lines[lines.length - 1];
+        if (lastLine.length > 0) {
+          lastLine[lastLine.length - 1] += '.';
+        }
+      }
+    });
+    
+    return lines;
+  };
+
+  const descriptionLines = splitIntoLines(hero.description);
+  
+  // Calculate total characters before each line for proper delay
+  const getCharacterCountBeforeLine = (lineIndex: number): number => {
+    let count = 0;
+    for (let i = 0; i < lineIndex; i++) {
+      descriptionLines[i].forEach(word => {
+        count += word.length + 1; // +1 for space
+      });
+    }
+    return count;
+  };
+
   return (
     <section ref={heroRef} className="pt-44 pb-36 px-6 relative">
       <div className="max-w-7xl mx-auto">
@@ -25,8 +63,12 @@ export default function HeroSection({ heroRef, isHeroVisible }: HeroSectionProps
             }`} style={{ transitionDelay: isHeroVisible ? '0.2s' : '0s' }}>
               <span className={`inline-block relative ${isHeroVisible ? 'animate-list-item' : 'opacity-0'}`} style={{ animationDelay: isHeroVisible ? '0.3s' : '0s' }}>
                 <span className="inline-block mb-2 whitespace-nowrap">
-                  <span className="text-amber-500 font-extrabold text-7xl md:text-8xl lg:text-9xl tracking-tighter">50–500</span>
-                  <span className="text-white font-bold text-5xl md:text-6xl lg:text-7xl ml-3">TPH</span>
+                  <span className={`text-amber-500 font-extrabold text-7xl md:text-8xl lg:text-9xl tracking-tighter ${
+                    isHeroVisible ? 'animate-number-slide animate-number-glow' : 'opacity-0'
+                  }`} style={{ animationDelay: isHeroVisible ? '0.4s' : '0s' }}>50–500</span>
+                  <span className={`text-white font-bold text-5xl md:text-6xl lg:text-7xl ml-3 ${
+                    isHeroVisible ? 'animate-number-slide' : 'opacity-0'
+                  }`} style={{ animationDelay: isHeroVisible ? '0.6s' : '0s' }}>TPH</span>
                 </span>
                 <br />
                 <span className="text-white text-4xl md:text-5xl lg:text-6xl font-semibold block mt-2">
@@ -40,11 +82,58 @@ export default function HeroSection({ heroRef, isHeroVisible }: HeroSectionProps
                 </span>
               </span>
             </h1>
-            <p className={`text-xl md:text-2xl text-slate-300 leading-relaxed max-w-2xl ${
-              isHeroVisible ? 'fade-in' : 'opacity-0'
-            }`} style={{ animationDelay: isHeroVisible ? '0.4s' : '0s' }}>
-              {hero.description}
-            </p>
+            <div className={`text-xl md:text-2xl text-slate-300 leading-relaxed max-w-2xl text-justify ${
+              isHeroVisible ? '' : 'opacity-0'
+            }`}>
+              {descriptionLines.map((line, lineIndex) => {
+                const charsBeforeLine = getCharacterCountBeforeLine(lineIndex);
+                let charIndex = 0;
+                const baseDelay = 0.8;
+                const typingSpeed = 0.03; // Speed of typing (seconds per character)
+                
+                return (
+                  <p key={lineIndex} className="mb-2 text-justify">
+                    {line.map((word, wordIndex) => {
+                      return (
+                        <span key={wordIndex}>
+                          {word.split('').map((char, charInWordIndex) => {
+                            const globalCharIndex = charsBeforeLine + charIndex++;
+                            const totalDelay = baseDelay + globalCharIndex * typingSpeed;
+                            
+                            return (
+                              <span
+                                key={charInWordIndex}
+                                className={`inline-block ${
+                                  isHeroVisible ? 'animate-typing-char' : 'opacity-0'
+                                }`}
+                                style={{
+                                  animationDelay: isHeroVisible ? `${totalDelay}s` : '0s',
+                                }}
+                              >
+                                {char}
+                              </span>
+                            );
+                          })}
+                          {wordIndex < line.length - 1 && (
+                            <span
+                              className={`inline-block ${
+                                isHeroVisible ? 'animate-typing-char' : 'opacity-0'
+                              }`}
+                              style={{
+                                animationDelay: isHeroVisible ? `${baseDelay + (charsBeforeLine + charIndex++) * typingSpeed}s` : '0s',
+                                width: '0.25em',
+                              }}
+                            >
+                              {' '}
+                            </span>
+                          )}
+                        </span>
+                      );
+                    })}
+                  </p>
+                );
+              })}
+            </div>
             <div className={`flex flex-wrap gap-5 pt-6 transition-all duration-1000 ${
               isHeroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`} style={{ transitionDelay: isHeroVisible ? '0.6s' : '0s' }}>
