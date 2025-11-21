@@ -39,6 +39,14 @@ export default function Navigation({ activeSection }: NavigationProps) {
             {portfolioContent.navigation.links.services}
           </a>
           <a 
+            href="#books" 
+            className={`transition-colors font-medium text-lg tracking-wide ${
+              activeSection === 'books' ? 'text-sky-400 font-bold' : 'text-slate-300 hover:text-white'
+            }`}
+          >
+            {portfolioContent.navigation.links.books}
+          </a>
+          <a 
             href="#contact" 
             className={`transition-colors font-medium text-lg tracking-wide ${
               activeSection === 'contact' ? 'text-sky-400 font-bold' : 'text-slate-300 hover:text-white'
@@ -87,4 +95,5 @@ export default function Navigation({ activeSection }: NavigationProps) {
     </nav>
   );
 }
+
 

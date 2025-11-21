@@ -24,12 +24,20 @@ export default function HeroSection({ heroRef, isHeroVisible }: HeroSectionProps
               isHeroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`} style={{ transitionDelay: isHeroVisible ? '0.2s' : '0s' }}>
               <span className={`inline-block relative ${isHeroVisible ? 'animate-list-item' : 'opacity-0'}`} style={{ animationDelay: isHeroVisible ? '0.3s' : '0s' }}>
-                {hero.textPrefix}
-                <span className="text-amber-600 relative inline-block">
-                  {hero.textSuffix}
-                  <span className="absolute -bottom-3 left-0 w-full h-1.5 bg-gradient-to-r from-amber-600 via-amber-500 to-transparent opacity-60"></span>
+                <span className="inline-block mb-2 whitespace-nowrap">
+                  <span className="text-amber-500 font-extrabold text-7xl md:text-8xl lg:text-9xl tracking-tighter">50–500</span>
+                  <span className="text-white font-bold text-5xl md:text-6xl lg:text-7xl ml-3">TPH</span>
                 </span>
-                .
+                <br />
+                <span className="text-white text-4xl md:text-5xl lg:text-6xl font-semibold block mt-2">
+                  Plant Specialist
+                </span>
+                <span className="text-slate-400 text-3xl md:text-4xl lg:text-5xl font-medium block mt-3">
+                  Global Project Execution
+                </span>
+                <span className="text-amber-400 text-3xl md:text-4xl lg:text-5xl font-semibold block mt-2">
+                  40+ Countries
+                </span>
               </span>
             </h1>
             <p className={`text-xl md:text-2xl text-slate-300 leading-relaxed max-w-2xl ${
@@ -80,15 +88,15 @@ export default function HeroSection({ heroRef, isHeroVisible }: HeroSectionProps
             </div>
           </div>
           <div className="relative">
-            <div className={`aspect-square rounded-3xl overflow-hidden border-2 border-slate-700/60 shadow-2xl bg-gradient-to-br from-slate-900 to-slate-800 relative ${
+            <div className={`aspect-[2/3] rounded-3xl overflow-hidden shadow-2xl relative ${
               isHeroVisible ? 'fade-in' : 'opacity-0'
             }`} style={{ animationDelay: isHeroVisible ? '0.3s' : '0s' }}>
               <Image
-                src="https://media.licdn.com/dms/image/v2/D5603AQHqCHLcCfv3rQ/profile-displayphoto-scale_200_200/B56ZmHAJ3iJ8AY-/0/1758906594775?e=2147483647&v=beta&t=3FnM4qI4-GPt1D8KmtEbWF_HfMyQctj5DQchnQ5eyLU"
+                src="/assets/profile.png"
                 alt="Ravisanth R Pillai"
                 width={500}
-                height={500}
-                className="w-full h-full object-cover relative z-0"
+                height={750}
+                className="w-full h-full object-contain relative z-0"
                 priority
               />
             </div>

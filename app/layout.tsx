@@ -59,9 +59,9 @@ export const metadata: Metadata = {
     description: "Country Head at Indus Crusher. 15+ years in mining, crushing and aggregates. Worked across 40+ countries. Writer, documentary creator, and storyteller about Kerala's medieval history.",
     images: [
       {
-        url: "https://media.licdn.com/dms/image/v2/D5603AQHqCHLcCfv3rQ/profile-displayphoto-scale_200_200/B56ZmHAJ3iJ8AY-/0/1758906594775?e=2147483647&v=beta&t=3FnM4qI4-GPt1D8KmtEbWF_HfMyQctj5DQchnQ5eyLU",
-        width: 200,
-        height: 200,
+        url: "https://www.ravisanth.com/assets/profile.png",
+        width: 500,
+        height: 500,
         alt: "Ravisanth R Pillai",
       },
     ],
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     title: "Ravisanth R Pillai | Engineer | Entrepreneur | Writer | Life Coach",
     description: "Country Head at Indus Crusher. 15+ years in mining, crushing and aggregates. Writer, documentary creator, and storyteller about Kerala.",
     images: [
-      "https://media.licdn.com/dms/image/v2/D5603AQHqCHLcCfv3rQ/profile-displayphoto-scale_200_200/B56ZmHAJ3iJ8AY-/0/1758906594775?e=2147483647&v=beta&t=3FnM4qI4-GPt1D8KmtEbWF_HfMyQctj5DQchnQ5eyLU",
+      "https://www.ravisanth.com/assets/profile.png",
     ],
   },
   robots: {
@@ -132,7 +132,7 @@ export default function RootLayout({
               },
               description: "Engineer, Entrepreneur, Writer, and Life Coach. 15+ years in mining, crushing and aggregates. Worked across 40+ countries.",
               url: "https://www.ravisanth.com",
-              image: "https://media.licdn.com/dms/image/v2/D5603AQHqCHLcCfv3rQ/profile-displayphoto-scale_200_200/B56ZmHAJ3iJ8AY-/0/1758906594775?e=2147483647&v=beta&t=3FnM4qI4-GPt1D8KmtEbWF_HfMyQctj5DQchnQ5eyLU",
+              image: "https://www.ravisanth.com/assets/profile.png",
               email: "info@ravisanth.com",
               telephone: "+91 9605673444",
               address: {

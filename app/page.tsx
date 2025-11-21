@@ -9,6 +9,7 @@ import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
 import ProjectsSection from '@/components/ProjectsSection';
 import ServicesSection from '@/components/ServicesSection';
+import BooksSection from '@/components/BooksSection';
 import ContactSection from '@/components/ContactSection';
 import ProfilesSection from '@/components/ProfilesSection';
 import QuickFactsSection from '@/components/QuickFactsSection';
@@ -33,6 +34,7 @@ export default function Home() {
   const [aboutRef, isAboutVisible] = useIntersectionObserver();
   const [projectsRef, isCarouselVisible] = useIntersectionObserver();
   const [servicesRef, isServicesVisible] = useIntersectionObserver();
+  const [booksRef, isBooksVisible] = useIntersectionObserver();
   const [contactRef, isContactVisible] = useIntersectionObserver();
   const [profilesRef, isProfilesVisible] = useIntersectionObserver();
   const [quickFactsRef, isQuickFactsVisible] = useIntersectionObserver();
@@ -112,6 +114,7 @@ export default function Home() {
       { id: 'about', ref: aboutRef as React.RefObject<HTMLDivElement> },
       { id: 'projects', ref: projectsRef as React.RefObject<HTMLDivElement> },
       { id: 'services', ref: servicesRef as React.RefObject<HTMLDivElement> },
+      { id: 'books', ref: booksRef as React.RefObject<HTMLDivElement> },
       { id: 'contact', ref: contactRef as React.RefObject<HTMLDivElement> },
     ];
 
@@ -204,6 +207,7 @@ export default function Home() {
           setCurrentProject={setCurrentProject}
         />
         <ServicesSection servicesRef={servicesRef} isServicesVisible={isServicesVisible} />
+        <BooksSection booksRef={booksRef} isBooksVisible={isBooksVisible} />
         <ContactSection 
           contactRef={contactRef} 
           isContactVisible={isContactVisible}
