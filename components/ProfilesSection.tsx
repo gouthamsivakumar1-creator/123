@@ -61,7 +61,7 @@ export default function ProfilesSection({ profilesRef, isProfilesVisible }: Prof
             <Icon src="/assets/icons/youtube.svg" alt="YouTube" width={28} height={28} className="w-7 h-7 relative z-10" />
           </a>
           <a 
-            href="mailto:info@ravisanth.com" 
+            href="mailto:hello@ravisanth.com" 
             className="group w-16 h-16 rounded-xl bg-slate-900/80 border border-slate-700 hover:bg-amber-600 hover:border-amber-600 flex items-center justify-center text-slate-300 hover:text-white transition-all duration-300 hover:scale-110 shadow-lg relative overflow-hidden"
             aria-label="Email"
           >

@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Ravisanth R Pillai | Engineer | Entrepreneur | Writer | Life Coach",
+    default: "Ravisanth R Pillai | Independent Consultant | Engineer | Entrepreneur | Writer",
     template: "%s | Ravisanth R Pillai",
   },
   description: "Country Head at Indus Crusher. 15+ years in mining, crushing and aggregates. Worked across 40+ countries. Writer, documentary creator, and storyteller about Kerala's medieval history.",
@@ -55,8 +55,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.ravisanth.com",
     siteName: "Ravisanth R Pillai",
-    title: "Ravisanth R Pillai | Engineer | Entrepreneur | Writer | Life Coach",
-    description: "Country Head at Indus Crusher. 15+ years in mining, crushing and aggregates. Worked across 40+ countries. Writer, documentary creator, and storyteller about Kerala's medieval history.",
+    title: "Ravisanth R Pillai | Independent Consultant | Engineer | Entrepreneur | Writer",
+    description: "Independent Consultant | Crushing–Screening–Beneficiation Engineer | Entrepreneur | Writer. Plant Design (50–1000 TPH) across 40+ countries. APR Beyond Boundaries Creativity Pvt. Ltd.",
     images: [
       {
         url: "https://www.ravisanth.com/assets/profile.png",
@@ -68,8 +68,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ravisanth R Pillai | Engineer | Entrepreneur | Writer | Life Coach",
-    description: "Country Head at Indus Crusher. 15+ years in mining, crushing and aggregates. Writer, documentary creator, and storyteller about Kerala.",
+    title: "Ravisanth R Pillai | Independent Consultant | Engineer | Entrepreneur | Writer",
+    description: "Independent Consultant | Crushing–Screening–Beneficiation Engineer | Entrepreneur | Writer. Plant Design (50–1000 TPH) across 40+ countries.",
     images: [
       "https://www.ravisanth.com/assets/profile.png",
     ],
@@ -125,16 +125,16 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Ravisanth R Pillai",
-              jobTitle: "Country Head",
+              jobTitle: "Independent Consultant",
               worksFor: {
                 "@type": "Organization",
-                name: "Indus Crusher",
+                name: "APR Beyond Boundaries Creativity Pvt. Ltd.",
               },
-              description: "Engineer, Entrepreneur, Writer, and Life Coach. 15+ years in mining, crushing and aggregates. Worked across 40+ countries.",
+              description: "Independent Consultant | Crushing–Screening–Beneficiation Engineer | Entrepreneur | Writer. Plant Design (50–1000 TPH) across 40+ countries.",
               url: "https://www.ravisanth.com",
               image: "https://www.ravisanth.com/assets/profile.png",
-              email: "info@ravisanth.com",
-              telephone: "+91 9605673444",
+              email: "hello@ravisanth.com",
+              telephone: "+91 9566867444",
               address: {
                 "@type": "PostalAddress",
                 addressCountry: "IN",

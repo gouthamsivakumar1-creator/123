@@ -135,7 +135,7 @@ export default function Home() {
         
         if (activeId) {
           setActiveSection(activeId);
-        }
+            }
       },
       {
         threshold: [0.1, 0.3, 0.5],

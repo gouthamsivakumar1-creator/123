@@ -97,7 +97,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
               <Icon src="/assets/icons/youtube.svg" alt="YouTube" width={24} height={24} className="w-5 h-5 xl:w-6 xl:h-6" />
             </a>
             <a
-              href="mailto:info@ravisanth.com"
+              href="mailto:hello@ravisanth.com"
               className="w-8 h-8 xl:w-9 xl:h-9 flex items-center justify-center text-slate-300 hover:text-amber-600 transition-all duration-300 hover:scale-110"
               aria-label="Email"
             >
@@ -196,7 +196,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
                 <Icon src="/assets/icons/youtube.svg" alt="YouTube" width={24} height={24} className="w-6 h-6" />
               </a>
               <a
-                href="mailto:info@ravisanth.com"
+                href="mailto:hello@ravisanth.com"
                 className="w-10 h-10 flex items-center justify-center text-slate-300 hover:text-amber-600 transition-all duration-300"
                 aria-label="Email"
               >

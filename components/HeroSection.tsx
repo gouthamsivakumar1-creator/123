@@ -47,7 +47,7 @@ export default function HeroSection({ heroRef, isHeroVisible }: HeroSectionProps
                 <span className="inline-block mb-2 whitespace-nowrap">
                   <span className={`text-amber-500 font-extrabold text-7xl md:text-8xl lg:text-9xl tracking-tighter ${
                     isHeroVisible ? 'animate-number-slide animate-number-glow' : 'opacity-0'
-                  }`} style={{ animationDelay: isHeroVisible ? '0.4s' : '0s' }}>50–500</span>
+                  }`} style={{ animationDelay: isHeroVisible ? '0.4s' : '0s' }}>50–1000</span>
                   <span className={`text-white font-bold text-5xl md:text-6xl lg:text-7xl ml-3 ${
                     isHeroVisible ? 'animate-number-slide' : 'opacity-0'
                   }`} style={{ animationDelay: isHeroVisible ? '0.6s' : '0s' }}>TPH</span>
@@ -60,7 +60,7 @@ export default function HeroSection({ heroRef, isHeroVisible }: HeroSectionProps
                   Global Project Execution
                 </span>
                 <span className="text-amber-400 text-3xl md:text-4xl lg:text-5xl font-semibold block mt-2">
-                  40+ Countries
+                   40+ Countries
                 </span>
               </span>
             </h1>
