@@ -163,7 +163,7 @@ export default function HeroSection({ heroRef, isHeroVisible }: HeroSectionProps
               isHeroVisible ? 'fade-in' : 'opacity-0'
             }`} style={{ animationDelay: isHeroVisible ? '0.3s' : '0s' }}>
               <Image
-                src="/assets/profile.png"
+                src="/assets/profile.jpeg"
                 alt="Ravisanth R Pillai"
                 width={500}
                 height={750}
